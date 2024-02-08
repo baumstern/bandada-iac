@@ -22,8 +22,8 @@ services:
             dockerfile: ./apps/client/Dockerfile
         image: bandada-client:latest
         restart: unless-stopped
-        environment:
-            - NODE_ENV=production
+        env_file:
+            - apps/client/.env.local
         ports:
             - "3002:80"
         networks:
@@ -38,8 +38,8 @@ services:
             dockerfile: ./apps/dashboard/Dockerfile
         image: bandada-dashboard:latest
         restart: unless-stopped
-        environment:
-            - NODE_ENV=production
+        env_file:
+            - apps/dashboard/.env.local
         ports:
             - "3001:80"
         networks:
@@ -51,9 +51,9 @@ services:
         container_name: postgres
         image: postgres
         environment:
-            POSTGRES_USER: root
+            POSTGRES_USER: postgres
             POSTGRES_PASSWORD: helloworld
-            POSTGRES_DB: bandada
+            POSTGRES_DB: postgres
             PGDATA: /data/postgres
         volumes:
             - postgres:/data/postgres
