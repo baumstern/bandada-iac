@@ -86,3 +86,9 @@ typechain
 !.yarn/versions
 
 *.db
+
+bk
+.terraform
+*.tfstate
+*.tfstate.*
+*.lock.hcl
